@@ -1,0 +1,20 @@
+public void nextTuple() {
+      if(this.idx <= 1000) {
+         List<String> mobileNumbers = new ArrayList<String>();
+         mobileNumbers.add("1234123401");
+         mobileNumbers.add("1234123402");
+         mobileNumbers.add("1234123403");
+         mobileNumbers.add("1234123404");
+
+         Integer localIdx = 0;
+         while(localIdx++ < 100 && this.idx++ < 1000) {
+         	String fromMobileNumber = mobileNumbers.get(randomGenerator.nextInt(4));
+    	String toMobileNumber = mobileNumbers.get(randomGenerator.nextInt(4));	
+            while(fromMobileNumber == toMobileNumber) {
+              toMobileNumber = mobileNumbers.get(randomGenerator.nextInt(4));
+ 	}
+				
+           		 Integer duration = randomGenerator.nextInt(60);
+            	this.collector.emit(new Values(fromMobileNumber, toMobileNumber, duration));
+        		 }
+     	 }
