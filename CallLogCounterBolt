@@ -1,0 +1,13 @@
+ public void execute(Tuple tuple) {
+      String call = tuple.getString(0);
+      Integer duration = tuple.getInteger(1);
+		
+      if(!counterMap.containsKey(call)){
+         counterMap.put(call, 1);
+      }else{
+         Integer c = counterMap.get(call) + 1;
+         counterMap.put(call, c);
+      }
+		
+      collector.ack(tuple);
+   }
